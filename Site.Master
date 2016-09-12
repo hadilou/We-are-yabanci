@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WeAreYabanci.com.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> WeAreYabanci</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <asp:ScriptReference  Path="~/Scripts/MSjax/JavaScript.js" />
+                
+
+ <%--Site Scripts--%>
+            
+              
+
+                
+
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div  class="navbar navbar-inverse navbar-fixed-top"  style="position:absolute">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="Home"><a runat="server" href="~/">Home</a></li>
+
+                        <li class="dropdown"><a class="sub-menu-parent" data-toggle="dropdown" href="#">About Turkey</a>
+                            <ul class="dropdown-menu">
+                                <li id="About us"><a href="/About Turkey views/About us.aspx">About us</a></li>
+                                <li id="C A H"><a href="/About Turkey views/Culture Art and History.aspx">Culture Art and History</a></li>
+                                 <li id="Tur Cui"><a href="/About Turkey views/Turkish Cuisine.aspx">Turkish Cuisine</a></li>
+                                 <li><a href="/About Turkey views/Tranport.aspx">Transport</a></li>
+                                <li><a href="/About Turkey views/Health and Insurance.aspx">Health and Insurance</a></li>
+                                <li><a href="/About Turkey views/Security ans Laws.aspx">Security and Laws</a></li>
+                                <li><a href="/About Turkey views/Working Life.aspx">Working Life</a></li>
+                                <li><a href="/About Turkey views/Shopping.aspx">Shopping</a></li>
+                            </ul>
+                       </li>
+
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Education in Turkey</a>
+                            <ul class="dropdown-menu">
+                               <li><a href="/Education in Turkey views/Overview.aspx">Overview</a></li>
+                               <li><a href="/Education in Turkey views/Turkish universities.aspx">Turkish Universities</a></li>
+                                <li><a href="/Education in Turkey views/Scholarships opportunies.aspx">Scholarships opportunies</a></li>
+                            </ul>
+                       </li>
+
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Common problems</a>
+                              <ul class="dropdown-menu">
+                                   <li><a href="/Common problems views/Relations with turkish.aspx">Relations with Turkish</a></li>
+                                   <li><a href="/Common problems views/Common problems.aspx">Common problems</a></li>
+                                   <li><a href="/Common problems views/School life.aspx">School life</a></li>
+                              </ul>
+                         </li>  
+                        <li><a runat="server" href="~/FAQ">FAQ</a></li>
+                        <li><a runat="server" href="http://forum.weareyabanci.com/forum/Forum.aspx" target="_blank">Forum</a></li>
+                        <li><a runat="server" href ="#" >  </a></li>
+                        <li><a runat="server" href ="#" >  </a></li>
+                         <li class="dropdown"><a class="sub-menu-parent" data-toggle="dropdown" href="#"><img src="\Images\lang.png" style=" width:30px;"  /></a>
+                            <ul class="dropdown-menu">
+                                <li> <a href="#">Français</a>  </li>
+                                <li><a href="#">Türçe</a></li>
+                                <li><a href="#">English</a></li>
+                       
+                            </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                
+                                 </AnonymousTemplate>
+        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right" style="font-size:12px">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account"> <%: Context.User.Identity.GetUserName()  %> </a></li>
+                                <li style="top:10px">
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect"  
+                                        LogoutImageUrl="~/Images/logout.jpg"  Width="30px" Height="30px"  
+                                        LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" 
+                                        meta:resourcekey="LoginStatusResource1" ></asp:LoginStatus>
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="height:100px;padding-bottom:100px">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+            <hr />
+            <hr />
+
+           <%--<footer>
+                <p>&copy; <%: DateTime.Now.Year %> - WeAreYabanci.com</p>
+            </footer>--%>
+        
+         
+    </form>
+</body>
+</html>
